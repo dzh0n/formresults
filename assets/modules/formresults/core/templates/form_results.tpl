@@ -43,7 +43,8 @@
         fetch('<?= $moduleUrl ?>&type=<?= $form['alias'] ?>&action=delete', {
             method: 'POST',
             body: new URLSearchParams({
-                result_id: id
+                result_id: id,
+                _token: '<?=csrf_token()?>'
             })
         }).then(function(response) {
             window.location.reload();
@@ -58,7 +59,10 @@
         }
 
         fetch('<?= $moduleUrl ?>&type=<?= $form['alias'] ?>&action=deleteall', {
-            method: 'POST'
+            method: 'POST',
+            body: new URLSearchParams({
+                _token: '<?=csrf_token()?>'
+            })
         }).then(function(response) {
             window.location.reload();
         });
